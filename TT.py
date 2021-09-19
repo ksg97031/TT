@@ -1,3 +1,9 @@
+class A(object):
+  s = "a"
+  
+class B:
+  s = "a"
+  
 def taint1(msg):
   print(msg.upper())
  
@@ -13,6 +19,14 @@ def taint3(msg):
 def taint4(msg):
   a = msg + "4"
   str.format(a, "B")
+  
+def taint5(msg):
+  cls = A()
+  msg.format(cls)
+  
+def taint6(msg):
+  cls = B()
+  msg.format(cls)
   
 if __name__ == '__main__':
   taint1("t")
